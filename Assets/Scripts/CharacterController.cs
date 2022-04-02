@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Background
+namespace Assets.Scripts
 {
     public class CharacterController : MonoBehaviour {
         private const float MaxSpeed = 10f;
@@ -34,6 +34,11 @@ namespace Assets.Background
             var theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
-        }		
+        }	
+        
+        // void OnTriggerEnter(Collider other)
+        // {
+        //     print("Collision detected with trigger object " + other.name);
+        // }
     }
 }
