@@ -11,6 +11,7 @@ namespace Assets.Scripts
             if (other == null) throw new ArgumentNullException(nameof(other));
             if (other.tag == "Player")
             {
+                GetComponent<AudioSource>().Play();
                 Debug.Log("Чел в зоне достигаемости " + other.name);
             }
         }
