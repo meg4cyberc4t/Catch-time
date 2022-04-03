@@ -35,7 +35,7 @@ namespace Assets.Scripts
         {
             if (other.tag == "Player")
             {
-                
+                other.gameObject.GetComponent<CharacterController>().isNear = false;
                 Ebutton.GetComponent<SpriteRenderer>().color = new Color(255,255,255,0);
             } 
         }
