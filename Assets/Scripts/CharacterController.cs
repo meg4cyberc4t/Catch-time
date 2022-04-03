@@ -24,7 +24,6 @@ namespace Assets.Scripts
             GetComponent<Rigidbody2D>().velocity = new Vector2 (_move * MaxSpeed, GetComponent<Rigidbody2D>().velocity.y);
             if (_move != 0) Debug.Log("Ходит");
             _anim.SetBool("IsMove", _move !=0);
-            _anim.Play(_move != 0 ? "Move" : "Idle");
             switch (_move)
             {
                 case > 0:
