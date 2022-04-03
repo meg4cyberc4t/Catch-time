@@ -28,7 +28,7 @@ namespace Assets.Scripts
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
             if (other.tag != "Player") return;
-            _characterNearby = true;
+            _characterNearby = false;
         }
     }
 }
