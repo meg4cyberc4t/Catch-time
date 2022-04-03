@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 7
+  Inventory: []
   NearCloth: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
@@ -388,7 +389,7 @@ GameObject:
   - component: {fileID: 610907564}
   - component: {fileID: 610907563}
   m_Layer: 0
-  m_Name: aff39b42ed16c769660d52368bff149f 1
+  m_Name: roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -643,7 +644,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1915297562}
   - component: {fileID: 1915297561}
-  - component: {fileID: 1915297563}
   - component: {fileID: 1915297564}
   - component: {fileID: 1915297565}
   - component: {fileID: 1915297566}
@@ -722,18 +722,6 @@ Transform:
   m_Father: {fileID: 2131536761}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1915297563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915297559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f2b7370febad4447b77ef93d4f77b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &1915297564
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -855,7 +843,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1915297559}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daf7f175194d6432084b6a7324b61fd3, type: 3}
+  m_Script: {fileID: 11500000, guid: f8293e933b13b44f58daf036c9815c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
