@@ -9,11 +9,9 @@ namespace Assets.Scripts
         private void OnTriggerEnter2D([NotNull] Collider2D other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
-            if (other.tag == "Player")
-            {
-                GetComponent<AudioSource>().Play();
-                Debug.Log("Чел в зоне достигаемости " + other.name);
-            }
+            if (other.tag != "Player") return;
+            GetComponent<AudioSource>().Play();
+            Debug.Log("Чел в зоне достигаемости " + other.name);
         }
         
         private void OnTriggerExit2D([NotNull] Collider2D other)

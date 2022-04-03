@@ -3,11 +3,11 @@ using UnityEngine;
 namespace Assets.Scripts
 {
     public class CharacterController : MonoBehaviour {
-        private const float MaxSpeed = 10f;
+        public float MaxSpeed = 6f;
+        
+        private float _move;
         private bool _facingRight = true;
-        public Transform GroundCheck;
-        public float GroundRadius = 0.2f;
-        private float _move = 0f;
+
 
         private void FixedUpdate () {
             _move = Input.GetAxis("Horizontal");
@@ -15,6 +15,7 @@ namespace Assets.Scripts
 
         private void Update(){
             GetComponent<Rigidbody2D>().velocity = new Vector2 (_move * MaxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+            if (Input.GetKey(KeyCode.LeftShift)) return;
             switch (_move)
             {
                 case > 0 when !_facingRight:
@@ -22,11 +23,7 @@ namespace Assets.Scripts
                     Flip ();
                     break;
             }
-            
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                Application.Quit();
-            }
+
         }
 
         private void Flip(){
@@ -34,11 +31,6 @@ namespace Assets.Scripts
             var theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
-        }	
-        
-        // void OnTriggerEnter(Collider other)
-        // {
-        //     print("Collision detected with trigger object " + other.name);
-        // }
+        }
     }
 }
