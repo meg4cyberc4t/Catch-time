@@ -6,9 +6,7 @@ namespace Assets.Scripts
 {
     public class CircleScript : MonoBehaviour
     {
-        private bool _characterNearby = false;
         GameObject Ebutton;
-
 
         private Animator _playerAnimator;
 
@@ -22,12 +20,8 @@ namespace Assets.Scripts
         {
             if (other.tag == "Player")
             {
-
-                other.gameObject.GetComponent<CharacterController>().isNear = true;
-                Debug.Log(other.gameObject.GetComponent<CharacterController>().isNear);
-
+                other.gameObject.GetComponent<CharacterController>().NearCloth = gameObject;
                 Ebutton.GetComponent<SpriteRenderer>().color = new Color(255,255,255,1);
-
             }   
         }
         
@@ -35,7 +29,7 @@ namespace Assets.Scripts
         {
             if (other.tag == "Player")
             {
-                other.gameObject.GetComponent<CharacterController>().isNear = false;
+                other.gameObject.GetComponent<CharacterController>().NearCloth = null;
                 Ebutton.GetComponent<SpriteRenderer>().color = new Color(255,255,255,0);
             } 
         }

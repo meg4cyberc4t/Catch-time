@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -5,7 +6,7 @@ namespace Assets.Scripts
     public class CharacterController : MonoBehaviour {
         public float MaxSpeed = 6f;
 
-        public bool isNear = false; 
+        [CanBeNull] public GameObject NearCloth; 
 
         private SpriteRenderer _spriteRenderer;
         private float _move;
@@ -45,11 +46,13 @@ namespace Assets.Scripts
 
             }
        
-            if(isNear)
+            if(NearCloth != null)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                      _anim.SetBool("Take", true);
+                     Destroy(NearCloth);
+                     NearCloth = null;
                 }
             }
 
