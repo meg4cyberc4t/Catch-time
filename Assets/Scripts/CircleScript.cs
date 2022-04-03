@@ -7,33 +7,37 @@ namespace Assets.Scripts
     public class CircleScript : MonoBehaviour
     {
         private bool _characterNearby = false;
+        GameObject Ebutton;
+
+
         private Animator _playerAnimator;
-        private void FixedUpdate()
+
+  
+        void Start()
         {
-            if (!_characterNearby) return;
-            if (!Input.GetKeyDown(KeyCode.E)) return;
-            _playerAnimator.SetTrigger("IsTake");
-            // _playerAnimator.Play("Take");
-            GetComponent<AudioSource>().Play();
-            // Destroy(gameObject);
-            //
-            Debug.Log("Убрали чела");
+            Ebutton = gameObject.transform.GetChild(0).gameObject;
         }
-        
+
         private void OnTriggerEnter2D([NotNull] Collider2D other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
-            if (other.tag != "Player") return;
-            _playerAnimator = other.gameObject.GetComponent<Animator>();
-            _characterNearby = true;
-            
+            if (other.tag == "Player")
+            {
+
+                other.gameObject.GetComponent<CharacterController>().isNear = true;
+                Debug.Log(other.gameObject.GetComponent<CharacterController>().isNear);
+
+                Ebutton.GetComponent<SpriteRenderer>().color = new Color(255,255,255,1);
+
+            }   
         }
         
         private void OnTriggerExit2D([NotNull] Collider2D other)
         {
-            if (other == null) throw new ArgumentNullException(nameof(other));
-            if (other.tag != "Player") return;
-            _characterNearby = false;
+            if (other.tag == "Player")
+            {
+                
+                Ebutton.GetComponent<SpriteRenderer>().color = new Color(255,255,255,0);
+            } 
         }
     }
 }
