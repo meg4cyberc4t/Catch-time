@@ -7,13 +7,15 @@ namespace Assets.Scripts
     public class PauseScript : MonoBehaviour
     {
         private bool _isPause;
-        public GameObject PauseMenu;
+        private GameObject _pauseMenu;
+
 
         void Start()
         {
+            _pauseMenu = GameObject.Find("Canvas");
             if(SceneManager.GetActiveScene().buildIndex == 1)
             {
-                PauseMenu.SetActive(false);
+                _pauseMenu.SetActive(false);
             }
         }
 
@@ -45,17 +47,16 @@ namespace Assets.Scripts
 
         public void Pause()
         {
-            PauseMenu.SetActive(true);
+            _pauseMenu.SetActive(true);
             Time.timeScale = 0f;
             _isPause = true;
         }
 
         public void Resume()
         {
-            PauseMenu.SetActive(false);
+            _pauseMenu.SetActive(false);
             Time.timeScale = 1f;
             _isPause = false;
-
         }
     }
 }
