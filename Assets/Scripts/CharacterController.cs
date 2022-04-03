@@ -22,19 +22,16 @@ namespace Assets.Scripts
 
         private void Update(){
             GetComponent<Rigidbody2D>().velocity = new Vector2 (_move * MaxSpeed, GetComponent<Rigidbody2D>().velocity.y);
-            
+            if (_move != 0) Debug.Log("Ходит");
+            _anim.SetBool("IsMove", _move !=0);
+            _anim.Play(_move != 0 ? "Move" : "Idle");
             switch (_move)
             {
                 case > 0:
                     _spriteRenderer.flipX = false;
-                    _anim.SetBool("IsMove", true);
                     break;
                 case < 0:
                     _spriteRenderer.flipX = true;
-                    _anim.SetBool("IsMove", true);
-                    break;
-                default:
-                    _anim.SetBool("IsMove", false);
                     break;
             }
 
