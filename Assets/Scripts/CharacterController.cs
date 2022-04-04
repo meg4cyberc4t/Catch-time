@@ -8,6 +8,9 @@ namespace Assets.Scripts
         public float MaxSpeed = 5f;
 
         [Range(0,4)] private int _capacity = 0;
+
+        GameObject Counter; 
+
         public List<GameObject> Inventory;
 
         [CanBeNull] public GameObject NearCloth; 
@@ -19,7 +22,10 @@ namespace Assets.Scripts
         
         
         private void Start()
-        {
+        {   
+             Counter = GameObject.Find("fd").gameObject;
+             Debug.Log(Counter.name);
+   
             _anim = GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
@@ -55,10 +61,14 @@ namespace Assets.Scripts
                 {
                      int clothWeight = NearCloth.GetComponent<СlothController>().Weight;
 
+
                      if (_capacity + clothWeight > 4) return; // Ты слишком много на себя берёшь
                      _capacity += clothWeight;
                      _anim.SetInteger("Capacity", _capacity);
                      _anim.SetBool("Take", true);
+
+                     Counter.SetText(_capacity.ToString());
+
                      Inventory.Add(NearCloth);
                      NearCloth.transform.position = new Vector3( NearCloth.transform.position.x, NearCloth.transform.position.y, 20f);
                      var nearClothColor  = NearCloth.GetComponent<SpriteRenderer>().color;
@@ -77,7 +87,7 @@ namespace Assets.Scripts
                 GetComponent<Animator>().SetBool("Swinging", true);
                 GetComponent<Animator>().SetBool("Drop", true);
 
-                // GetComponent<Animator>().SetInteger("    Capacity", 0);
+                // GetComponent<Animator>().SetInteger("Capacity", 0);
                 foreach (var o in Inventory)
                 {
                     var nearClothColor  = o.GetComponent<SpriteRenderer>().color;
@@ -85,7 +95,6 @@ namespace Assets.Scripts
                         nearClothColor.g, 
                         nearClothColor.b, 
                         1);
-                    o.transform.position = new Vector3( o.transform.position.x, o.transform.position.y, -2f);
                     o.GetComponent<CircleCollider2D>().enabled = true;
                     _capacity = 0;
                 }
