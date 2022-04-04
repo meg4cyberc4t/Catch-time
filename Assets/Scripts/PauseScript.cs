@@ -74,5 +74,16 @@ namespace Assets.Scripts
             Time.timeScale = 1f;
             _isPause = false;
         }
+
+        public void Tutorial()
+        {
+
+        }
+
+        public void closeTutorial()
+        {
+
+        }
+
     }
 }
