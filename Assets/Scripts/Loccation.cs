@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Loccation : MonoBehaviour
 {
@@ -12,12 +13,18 @@ public class Loccation : MonoBehaviour
     {
         Player = other.gameObject.transform;
         Player.transform.position = Coords;
-        anim.Play("shade");
+        if (other.tag =="Player")
+        {
+            anim.Play("shade");
+        }
+        // SceneManager.LoadScene("Bedroom");
+
+
     }
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        // anim = GetComponent<Animator>();
     }
 
 

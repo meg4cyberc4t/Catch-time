@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -96,6 +97,12 @@ namespace Assets.Scripts
                 GetComponent<Animator>().SetBool("Swinging", false);
                 GetComponent<Animator>().SetBool("Drop", false);
             }
+
+            if(Input.GetKeyDown(KeyCode.Z))
+            {
+                SceneManager.LoadScene(2);
+            }
         }
+        
     }
 }

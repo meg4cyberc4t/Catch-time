@@ -14,7 +14,7 @@ namespace Assets.Scripts
         void Start()
         {
             _pauseMenu = GameObject.Find("Canvas");
-            if(SceneManager.GetActiveScene().buildIndex == 1)
+            if(SceneManager.GetActiveScene().name != "Menu")
             {
                 try
                 {
@@ -48,7 +48,7 @@ namespace Assets.Scripts
 
         public void Replay()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("Kitchen");
         }
 
         public void Pause()
