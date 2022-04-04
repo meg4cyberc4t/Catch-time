@@ -12,6 +12,9 @@ namespace Assets.Scripts
 
         [Range(0, 4)] private int _capacity = 0;
 
+        
+        public int GetCapacity() => _capacity;
+
         public void SetCapacity(int value)
         {
             GameObject.Find("InGameUI/counter/fd").GetComponent<TextMeshProUGUI>().SetText(value.ToString());
