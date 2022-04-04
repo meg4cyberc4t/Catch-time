@@ -57,6 +57,7 @@ namespace Assets.Scripts
                      int clothWeight = NearCloth.GetComponent<СlothController>().Weight;
                      if (_capacity + clothWeight > 4) return; // Ты слишком много на себя берёшь
                      _capacity += clothWeight;
+                     GetComponent<Animator>().SetInteger("Capacity", _capacity);
                      Inventory.Add(NearCloth);
                      NearCloth.transform.position = new Vector3( NearCloth.transform.position.x, NearCloth.transform.position.y, 20f);
                      var nearClothColor  = NearCloth.GetComponent<SpriteRenderer>().color;
@@ -72,7 +73,10 @@ namespace Assets.Scripts
             // ВРЕМЕННО!
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                // Когда девчонка падает
+                GetComponent<Animator>().SetBool("Swinging", true);
+                GetComponent<Animator>().SetBool("Drop", true);
+
+                // GetComponent<Animator>().SetInteger("Capacity", _capacity);
                 foreach (var o in Inventory)
                 {
                     var nearClothColor  = o.GetComponent<SpriteRenderer>().color;
@@ -84,6 +88,8 @@ namespace Assets.Scripts
                     o.GetComponent<CircleCollider2D>().enabled = true;
                     _capacity = 0;
                 }
+                GetComponent<Animator>().SetBool("Swinging", false);
+                GetComponent<Animator>().SetBool("Drop", false);
             }
 
 
