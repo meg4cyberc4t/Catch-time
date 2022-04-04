@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Loccation : MonoBehaviour
 {
     public Transform Player;
+    public Transform Camera;
+    public Vector3 CameraPos;
     public Animator anim;
     public Vector3 Coords = new Vector3(0,0,0);
 
@@ -13,10 +15,11 @@ public class Loccation : MonoBehaviour
     {
         Player = other.gameObject.transform;
         Player.transform.position = Coords;
-        if (other.tag =="Player")
-        {
-            anim.Play("shade");
-        }
+        Camera.transform.position = CameraPos;
+
+        // anim.Play("fade");
+
+        
         // SceneManager.LoadScene("Bedroom");
 
 
