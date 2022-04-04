@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -9,10 +10,17 @@ namespace Assets.Scripts
     {
         private bool _isPause;
         private GameObject _pauseMenu;
+        public GameObject close_button;
+        public GameObject tutorialImage;
+
+        public GameObject playb;
+        public GameObject tutorb;
 
 
         void Start()
         {
+
+
             _pauseMenu = GameObject.Find("Canvas");
             if(SceneManager.GetActiveScene().name != "Menu")
             {
@@ -22,6 +30,10 @@ namespace Assets.Scripts
                 }
                 catch (NullReferenceException _)
                 { }
+            }
+            else
+            {
+
             }
         }
 
@@ -77,11 +89,20 @@ namespace Assets.Scripts
 
         public void Tutorial()
         {
+            close_button.GetComponent<Image>().color = new Color(255,255,255,1);
+            tutorialImage.GetComponent<Image>().color = new Color(255,255,255,1);
 
+            playb.GetComponent<Image>().color = new Color(255,255,255,0);
+            tutorb.GetComponent<Image>().color = new Color(255,255,255,0);
         }
 
         public void closeTutorial()
         {
+            close_button.GetComponent<Image>().color = new Color(255,255,255,0);
+            tutorialImage.GetComponent<Image>().color = new Color(255,255,255,0);
+
+            playb.GetComponent<Image>().color = new Color(255,255,255,1);
+            tutorb.GetComponent<Image>().color = new Color(255,255,255,1);
 
         }
 

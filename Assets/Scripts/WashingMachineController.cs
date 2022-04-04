@@ -11,6 +11,8 @@ namespace Assets.Scripts
         private GameObject norm;
         private GameObject good;
         private GameObject bad;
+        
+        
 
         public int AllClothCounter;
         
