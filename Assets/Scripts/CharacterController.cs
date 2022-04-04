@@ -53,11 +53,12 @@ namespace Assets.Scripts
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                     _anim.SetBool("Take", true);
                      int clothWeight = NearCloth.GetComponent<СlothController>().Weight;
+
                      if (_capacity + clothWeight > 4) return; // Ты слишком много на себя берёшь
                      _capacity += clothWeight;
-                     GetComponent<Animator>().SetInteger("Capacity", _capacity);
+                     _anim.SetInteger("Capacity", _capacity);
+                     _anim.SetBool("Take", true);
                      Inventory.Add(NearCloth);
                      NearCloth.transform.position = new Vector3( NearCloth.transform.position.x, NearCloth.transform.position.y, 20f);
                      var nearClothColor  = NearCloth.GetComponent<SpriteRenderer>().color;
@@ -76,7 +77,7 @@ namespace Assets.Scripts
                 GetComponent<Animator>().SetBool("Swinging", true);
                 GetComponent<Animator>().SetBool("Drop", true);
 
-                // GetComponent<Animator>().SetInteger("Capacity", _capacity);
+                // GetComponent<Animator>().SetInteger("    Capacity", 0);
                 foreach (var o in Inventory)
                 {
                     var nearClothColor  = o.GetComponent<SpriteRenderer>().color;
