@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,7 +16,12 @@ namespace Assets.Scripts
             _pauseMenu = GameObject.Find("Canvas");
             if(SceneManager.GetActiveScene().buildIndex == 1)
             {
-                _pauseMenu.SetActive(false);
+                try
+                {
+                    _pauseMenu.SetActive(false);
+                }
+                catch (NullReferenceException _)
+                { }
             }
         }
 
@@ -47,14 +53,24 @@ namespace Assets.Scripts
 
         public void Pause()
         {
-            _pauseMenu.SetActive(true);
+            try
+            {
+                _pauseMenu.SetActive(true);
+            }
+            catch (NullReferenceException _)
+            { }
             Time.timeScale = 0f;
             _isPause = true;
         }
 
         public void Resume()
         {
-            _pauseMenu.SetActive(false);
+            try
+            {
+                _pauseMenu.SetActive(false);
+            }
+            catch (NullReferenceException _)
+            { }
             Time.timeScale = 1f;
             _isPause = false;
         }
