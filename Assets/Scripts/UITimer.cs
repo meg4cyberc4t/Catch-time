@@ -56,63 +56,11 @@ public class UITimer : MonoBehaviour
             if (_finalStart) return;
             _finalStart = true;
             camera.position = new Vector3(-77, -13, -20);
-            if(controller.AllClothCounter < 4)
-            {
-                StartCoroutine(BadEnding());
-            } else if (controller.AllClothCounter < 8)
-            {
-                StartCoroutine(NeutralEnding());
-            }
-            else
-            {
-                StartCoroutine(GoodEnding());
-            }
+            Ending.GetEnding(controller.AllClothCounter, StartCoroutine);
         }
         
     }
-    
-    IEnumerator BadEnding()
-    {
-        GameObject.Find("cutscene_about/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(2);
-        GameObject.Find("cutscene_about/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(2);
-        GameObject.Find("cutscene_about/3").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(2);
-        GameObject.Find("cutscene_bad/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(10);
-        GameObject.Find("cutscene_bad/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(10);
-    }
-    
-    IEnumerator NeutralEnding()
-    {
-        GameObject.Find("cutscene_about/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(2);
-        GameObject.Find("cutscene_about/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(2);
-        GameObject.Find("cutscene_about/3").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(2);
-        GameObject.Find("cutscene_neutral/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(10);
-        GameObject.Find("cutscene_neutral/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(10);
-    }
-    
-    IEnumerator GoodEnding()
-    {
-        GameObject.Find("cutscene_about/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(2);
-        GameObject.Find("cutscene_about/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(2);
-        GameObject.Find("cutscene_about/3").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(2);
-        GameObject.Find("cutscene_good/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(10);
-        GameObject.Find("cutscene_good/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        yield return new WaitForSeconds(10);
-    }
- 
+
     private void UpdateTimeText()
     {
         if (_timeLeft < 0)
@@ -122,7 +70,4 @@ public class UITimer : MonoBehaviour
         float seconds = Mathf.FloorToInt(_timeLeft % 60);
         timerText.SetText($"{minutes:00} : {seconds:00}");
     }
-
-
-
 }
