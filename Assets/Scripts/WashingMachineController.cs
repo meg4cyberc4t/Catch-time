@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -11,7 +12,8 @@ namespace Assets.Scripts
         private GameObject norm;
         private GameObject good;
         private GameObject bad;
-        
+
+        public Transform camera;
         
 
         public int AllClothCounter;
@@ -40,12 +42,12 @@ namespace Assets.Scripts
                 characterController.SetCapacity(0);
                 Debug.Log("Добрая мама");
 
-                if(AllClothCounter < 5)
+                if(AllClothCounter < 4)
                 {
 
                     bad.GetComponent<SpriteRenderer>().color = new Color(255,255,255,1);
                 }
-                else if(AllClothCounter < 10)
+                else if(AllClothCounter < 8)
                 {
 
                     norm.GetComponent<SpriteRenderer>().color = new Color(255,255,255,1);
@@ -59,6 +61,13 @@ namespace Assets.Scripts
                     bad.GetComponent<SpriteRenderer>().color = new Color(255,255,255,0);
                 }
 
+                if (AllClothCounter == 12)
+                {
+                    camera.position = new Vector3(-77, -13, -20);
+                    StartCoroutine((IEnumerator) GoodEnding());
+                    Debug.Log("Конец!");
+                }
+
             }
         }
         
@@ -69,5 +78,19 @@ namespace Assets.Scripts
                 _ebutton.GetComponent<SpriteRenderer>().color = new Color(255,255,255,0);
             } 
         }
+        IEnumerator GoodEnding()
+        {
+            GameObject.Find("cutscene_about/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+            yield return new WaitForSeconds(2);
+            GameObject.Find("cutscene_about/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+            yield return new WaitForSeconds(2);
+            GameObject.Find("cutscene_about/3").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+            yield return new WaitForSeconds(2);
+            GameObject.Find("cutscene_good/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+            yield return new WaitForSeconds(10);
+            GameObject.Find("cutscene_good/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+            yield return new WaitForSeconds(10);
+        }
     }
+    
 }

@@ -15,6 +15,11 @@ public class UITimer : MonoBehaviour
     private float _timeLeft = 120f;
     private bool _timerOn = false;
     
+    public Transform camera;
+
+    private bool _finalStart = false;
+
+    
 
 
     //GameObject.Find("InGameUI/counter/fd").GetComponent<TextMeshProUGUI>();
@@ -24,10 +29,6 @@ public class UITimer : MonoBehaviour
     private void Start()
     {
         controller = GameObject.Find("WashingMachine").gameObject.GetComponent<WashingMachineController>();
-
-        GameObject.Find("cutscene_about/counter/").GetComponent<>();
-      
-
         timerText = gameObject.GetComponent<TextMeshProUGUI>();
         _timeLeft = time;
         _timerOn = true;
@@ -52,11 +53,64 @@ public class UITimer : MonoBehaviour
         }
         else
         {
-            if(controller.AllClothCounter < 5)
+            if (_finalStart) return;
+            _finalStart = true;
+            camera.position = new Vector3(-77, -13, -20);
+            if(controller.AllClothCounter < 4)
             {
-
+                StartCoroutine(BadEnding());
+            } else if (controller.AllClothCounter < 8)
+            {
+                StartCoroutine(NeutralEnding());
+            }
+            else
+            {
+                StartCoroutine(GoodEnding());
             }
         }
+        
+    }
+    
+    IEnumerator BadEnding()
+    {
+        GameObject.Find("cutscene_about/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(2);
+        GameObject.Find("cutscene_about/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(2);
+        GameObject.Find("cutscene_about/3").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(2);
+        GameObject.Find("cutscene_bad/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(10);
+        GameObject.Find("cutscene_bad/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(10);
+    }
+    
+    IEnumerator NeutralEnding()
+    {
+        GameObject.Find("cutscene_about/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(2);
+        GameObject.Find("cutscene_about/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(2);
+        GameObject.Find("cutscene_about/3").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(2);
+        GameObject.Find("cutscene_neutral/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(10);
+        GameObject.Find("cutscene_neutral/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(10);
+    }
+    
+    IEnumerator GoodEnding()
+    {
+        GameObject.Find("cutscene_about/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(2);
+        GameObject.Find("cutscene_about/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(2);
+        GameObject.Find("cutscene_about/3").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(2);
+        GameObject.Find("cutscene_good/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(10);
+        GameObject.Find("cutscene_good/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(10);
     }
  
     private void UpdateTimeText()
@@ -66,7 +120,7 @@ public class UITimer : MonoBehaviour
  
         float minutes = Mathf.FloorToInt(_timeLeft / 60);
         float seconds = Mathf.FloorToInt(_timeLeft % 60);
-        timerText.SetText(string.Format("{0:00} : {1:00}", minutes, seconds));
+        timerText.SetText($"{minutes:00} : {seconds:00}");
     }
 
 
