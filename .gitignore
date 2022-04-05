@@ -73,3 +73,5 @@ crashlytics-build.properties
 .idea/.idea.Catch time/.idea/encodings.xml
 .idea/.idea.Catch time/.idea/workspace.xml
 .idea/.idea.Catch time/.idea/projectSettingsUpdater.xml
+Windows/*
+Windows/Catch time_Data/
