@@ -60,7 +60,8 @@ namespace Assets.Scripts
 
         public void Replay()
         {
-            GameObject.Find("InGameUI/timer1").GetComponent<UITimer>().TimeLeft = 120;
+            if (GameObject.Find("InGameUI/timer1") != null) 
+                GameObject.Find("InGameUI/timer1").GetComponent<UITimer>().TimeLeft = 120;
             Time.timeScale = 1f;
             SceneManager.LoadScene("Kitchen");
         }
