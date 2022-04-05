@@ -39,7 +39,6 @@ namespace Assets.Scripts
                 characterController.Inventory = new List<GameObject>();
                 AllClothCounter += characterController.GetCapacity();
                 characterController.SetCapacity(0);
-                Debug.Log("Добрая мама");
 
                 if(AllClothCounter < 4)
                 {
@@ -62,6 +61,7 @@ namespace Assets.Scripts
                 if (AllClothCounter == 12)
                 {
                     camera.position = new Vector3(-77, -13, -20);
+                    Time.timeScale = 0;
                     Ending.GetEnding(AllClothCounter, StartCoroutine);
                 }
 

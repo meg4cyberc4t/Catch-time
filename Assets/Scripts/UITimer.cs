@@ -56,6 +56,7 @@ public class UITimer : MonoBehaviour
             if (_finalStart) return;
             _finalStart = true;
             camera.position = new Vector3(-77, -13, -20);
+            Time.timeScale = 0;
             Ending.GetEnding(controller.AllClothCounter, StartCoroutine);
         }
         
