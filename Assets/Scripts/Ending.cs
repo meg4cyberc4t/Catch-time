@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -36,6 +37,7 @@ namespace Assets.Scripts
             yield return new WaitForSecondsRealtime(10);
             GameObject.Find("cutscene_bad/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
             yield return new WaitForSecondsRealtime(10);
+            SceneManager.LoadScene("Menu");
         }
 
         static IEnumerator<WaitForSecondsRealtime> NeutralEnding()
@@ -50,6 +52,7 @@ namespace Assets.Scripts
             yield return new WaitForSecondsRealtime(10);
             GameObject.Find("cutscene_neutral/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
             yield return new WaitForSecondsRealtime(10);
+            SceneManager.LoadScene("Menu");
         }
 
         static IEnumerator<WaitForSecondsRealtime> GoodEnding()
@@ -63,7 +66,8 @@ namespace Assets.Scripts
             GameObject.Find("cutscene_good/1").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
             yield return new WaitForSecondsRealtime(10);
             GameObject.Find("cutscene_good/2").GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-            yield return new WaitForSecondsRealtime(10);
+            yield return new WaitForSecondsRealtime(10);            
+            SceneManager.LoadScene("Menu");
         }
     }
 }

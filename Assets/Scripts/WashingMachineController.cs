@@ -27,6 +27,11 @@ namespace Assets.Scripts
             good = gameObject.transform.GetChild(2).gameObject;
             bad = gameObject.transform.GetChild(3).gameObject;
         }
+
+        private void OnTriggerStart2D(Collider2D other)
+        {
+            OnTriggerStay2D(other);
+        }
         
         private void OnTriggerStay2D([NotNull] Collider2D other)
         {

@@ -19,8 +19,6 @@ namespace Assets.Scripts
 
         void Start()
         {
-
-
             _pauseMenu = GameObject.Find("Canvas");
             if(SceneManager.GetActiveScene().name != "Menu")
             {
@@ -30,10 +28,6 @@ namespace Assets.Scripts
                 }
                 catch (NullReferenceException _)
                 { }
-            }
-            else
-            {
-
             }
         }
 
