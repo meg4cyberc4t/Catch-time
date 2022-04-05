@@ -8,11 +8,11 @@ using Assets.Scripts;
 
 public class UITimer : MonoBehaviour
 {
-    [SerializeField] private float time;
-    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private float _time;
+    [SerializeField] private TextMeshProUGUI _timerText;
 
 
-    private float _timeLeft = 120f;
+    public float TimeLeft = 120f;
     private bool _timerOn = false;
     
     public Transform camera;
@@ -29,8 +29,8 @@ public class UITimer : MonoBehaviour
     private void Start()
     {
         controller = GameObject.Find("WashingMachine").gameObject.GetComponent<WashingMachineController>();
-        timerText = gameObject.GetComponent<TextMeshProUGUI>();
-        _timeLeft = time;
+        _timerText = gameObject.GetComponent<TextMeshProUGUI>();
+        TimeLeft = _time;
         _timerOn = true;
     }
  
@@ -40,14 +40,14 @@ public class UITimer : MonoBehaviour
 
         if (_timerOn)
         {
-            if (_timeLeft > 0)
+            if (TimeLeft > 0)
             {
-                _timeLeft -= Time.deltaTime;
+                TimeLeft -= Time.deltaTime;
                 UpdateTimeText();
             } 
             else
             {
-                _timeLeft = time;
+                TimeLeft = _time;
                 _timerOn = false;
             }
         }
@@ -63,11 +63,11 @@ public class UITimer : MonoBehaviour
 
     private void UpdateTimeText()
     {
-        if (_timeLeft < 0)
-            _timeLeft = 0;
+        if (TimeLeft < 0)
+            TimeLeft = 0;
  
-        float minutes = Mathf.FloorToInt(_timeLeft / 60);
-        float seconds = Mathf.FloorToInt(_timeLeft % 60);
-        timerText.SetText($"{minutes:00} : {seconds:00}");
+        float minutes = Mathf.FloorToInt(TimeLeft / 60);
+        float seconds = Mathf.FloorToInt(TimeLeft % 60);
+        _timerText.SetText($"{minutes:00} : {seconds:00}");
     }
 }

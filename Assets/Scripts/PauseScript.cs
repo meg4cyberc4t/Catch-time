@@ -60,6 +60,9 @@ namespace Assets.Scripts
 
         public void Replay()
         {
+            // Таймер в оачало
+            GameObject.Find("InGameUI/timer1").GetComponent<UITimer>().TimeLeft = 120;
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Kitchen");
         }
 
