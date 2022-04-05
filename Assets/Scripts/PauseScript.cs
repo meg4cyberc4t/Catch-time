@@ -19,8 +19,6 @@ namespace Assets.Scripts
 
         void Start()
         {
-
-
             _pauseMenu = GameObject.Find("Canvas");
             if(SceneManager.GetActiveScene().name != "Menu")
             {
@@ -30,10 +28,6 @@ namespace Assets.Scripts
                 }
                 catch (NullReferenceException _)
                 { }
-            }
-            else
-            {
-
             }
         }
 
@@ -60,6 +54,9 @@ namespace Assets.Scripts
 
         public void Replay()
         {
+            if (GameObject.Find("InGameUI/timer1") != null) 
+                GameObject.Find("InGameUI/timer1").GetComponent<UITimer>().TimeLeft = 120;
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Kitchen");
         }
 
