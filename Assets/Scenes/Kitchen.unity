@@ -272,8 +272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11fe3f6ad63766419eeb082b5b3ce8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 120
-  timerText: {fileID: 3237856}
+  _time: 120
+  _timerText: {fileID: 0}
+  TimeLeft: 120
   camera: {fileID: 519420032}
 --- !u!1 &7390191
 GameObject:
